@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 function Todo1() {
   const [todos, setTodos] = useState([]);
@@ -7,13 +8,15 @@ function Todo1() {
   const [editingText, setEditingText] = useState("");
 
   const addTodo = () => {
-    if (newTodo.trim() === "") return;
+    if (newTodo.trim() === "") return toast.error("Please enter something...");
     setTodos([...todos, { id: Date.now(), newTodo }]);
     setNewTodo("");
+    toast.success("Todo added successfully!");
   };
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
+    toast.error("Todo deleted successfully!");
   };
 
   const editTodo = (id) => {
@@ -30,10 +33,12 @@ function Todo1() {
     );
     setEditing(null);
     setEditingText("");
+    toast.success("Todo updated successfully!");
   };
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">Todo App</h1>

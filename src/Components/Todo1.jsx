@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 function Todo1() {
   const [todos, setTodos] = useState([]);
@@ -38,7 +38,7 @@ function Todo1() {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
+      
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
           <h1 className="text-2xl font-bold mb-4">Todo App</h1>
